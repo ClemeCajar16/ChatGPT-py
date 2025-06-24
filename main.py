@@ -1,8 +1,11 @@
 import openai
-import config
+import os 
+from dotenv import load_dotenv
 
-openai.api_key = config.API_key 
+load_dotenv() 
 
+openai.api_key = os.getenv("API_key")
+ 
 response = openai.ChatCompletion.create(
     model="GPT-4o",
     messages=[{
@@ -10,3 +13,4 @@ response = openai.ChatCompletion.create(
         "content": "¿cúal es el proposito de la vida?"
     }]
 )
+
